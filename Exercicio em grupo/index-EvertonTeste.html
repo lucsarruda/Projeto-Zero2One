@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  
+    <head>
+         <meta charset="utf-8">
+         <title>Listagem de produtos</title>
+         <link href="./estilos2.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        
+        <header>
+            <H1 align="Center">Listagem de produtos</H1>
+        </header>
+        
+        <div>
+            <form action="ServidorTeste.php" method="Post" class="cabec">
+                <label for="nome">Nome</label>     
+                </br>   
+                <input type="text" name="nome" id="nome" placeholder="Nome" >
+                </br>
+                <label for="number">Valor</label>
+                </br>
+                <input type="number" name="valor" id="valor" placeholder="valor">
+                </br>
+                <label for="URL">URL</label>
+                </br>
+                <input type="text" name="URL" id="URL" placeholder="URL" class="Url">
+                </br>
+                <label for="Descricao">Descrição</label>
+                </br>
+                <textarea name="Descricao" id="Descricao" cols="20" rows="10"></textarea>
+                </br>
+                <button type="button">Adicionar!</button>
+                </br>
+            </form>
+        </div>
+        
+      
+        <div class="item" id="itens">   
+              
+                item: 1
+            </br>
+                Produto: PRODUTO TESTE 1
+            </br>    
+                Valor: R$10.00
+            </br>  
+                Descrição:Teste produto 1 
+            </br> 
+            
+            
+             <img src="https://www.empreendaecommerce.com.br/wp-content/uploads/2018/07/prodBlog-696x479.png" alt="Smiley face"  class="imgitem"  >
+               
+        </div>
+       
+    </body>
+
+ </html>
+
