@@ -19,8 +19,7 @@ function chamaBotao() {
 
 function additem() {
 
-    let strDiv = `
-    <div class="item" id="itens">               
+    let strDiv = `            
                                                 
     	<div id="Contador">                      
     		<h3>item: XXX</h3>                     
@@ -40,9 +39,13 @@ function additem() {
                                                 
                                                 
     	<img src="https://www.empreendaecommerce.com.br/wp-content/uploads/2018/07/prodBlog-696x479.png" alt="Smiley face" class="imgitem"> 
-    </div> `
+     `
 
-    document.getElementById("divItens").innerHTML = strDiv
+    var div = document.createElement("div");
+    div.setAttribute("class", "item")
+    div.setAttribute("id", "itens")
+    div.innerHTML = strDiv;
+    document.getElementById("divItens").appendChild(div);
 
 
 }
