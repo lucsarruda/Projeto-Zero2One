@@ -1,4 +1,5 @@
 const formulario = {}
+var idItem = 1
 
 function chamaBotao() {
     const nome = document.getElementById("nome").value
@@ -6,23 +7,27 @@ function chamaBotao() {
     const URL = document.getElementById("URL").value
     const Descricao = document.getElementById("Descricao").value
 
+
     this.formulario = {
-        nome: nome,
-        valor: valor,
-        URL: URL,
-        Descricao: Descricao
-    }
-
+            nome: nome,
+            valor: valor,
+            URL: URL,
+            Descricao: Descricao
+        }
+        //adiciona item
     additem()
-
+        //Limpa formulario
+    clearForm()
 }
 
 function additem() {
 
+    var idItemD = this.idItem
+
     let strDiv = `            
                                                 
     	<div id="Contador">                      
-    		<h3>item: XXX</h3>                     
+    		<h3>item:${idItemD}</h3>                     
     	</div>                                   
                                                 
     	<div id="produtos">                      
@@ -30,7 +35,7 @@ function additem() {
     	</div>                                   
                                                 
     	<div id="valor">                         
-    		<h3>${this.formulario.valor}</h3>                    
+    		<h3>Valor:${this.formulario.valor}</h3>                    
     	</div>                                   
                                                 
     	<div id="descri">                        
@@ -38,14 +43,34 @@ function additem() {
     	</div>                                   
                                                 
                                                 
-    	<img src="https://www.empreendaecommerce.com.br/wp-content/uploads/2018/07/prodBlog-696x479.png" alt="Smiley face" class="imgitem"> 
-     `
+    	<img src="${this.formulario.URL}" alt="produto ${this.formulario.nome}" class="imgitem"> 
+        
+        <button type="button" class="remove" onclick="removeElement(this)">Remover</button>
+        
+        `
 
     var div = document.createElement("div");
     div.setAttribute("class", "item")
-    div.setAttribute("id", "itens")
+    div.setAttribute("id", "itens_" + idItemD)
+    this.idItem = idItemD + 1
     div.innerHTML = strDiv;
     document.getElementById("divItens").appendChild(div);
 
 
+}
+
+
+function removeElement(element) {
+    // Removes an element from the document
+    var element = element.parentElement
+    var elementID = element.id
+    var el = document.getElementById(elementID);
+    element.parentNode.removeChild(el);
+}
+
+function clearForm() {
+    document.getElementById("nome").value = ""
+    document.getElementById("valor").value = ""
+    document.getElementById("URL").value = ""
+    document.getElementById("Descricao").value = ""
 }

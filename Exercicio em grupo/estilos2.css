@@ -1,31 +1,25 @@
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
-    background:white
+    background: white
 }
 
-header{
-    font-family:monospace;
-    background:#f2f2f2
+header {
+    font-family: monospace;
+    background: #f2f2f2
 }
 
-
-
-
-.cabec{
+.cabec {
     text-align: center;
     border-radius: 3px;
     background: #f2f2f2;
     width: 500px;
     margin: 0 auto;
-    padding: 40px;  
+    padding: 40px;
     margin: 0 auto;
     margin-bottom: 10px
-
-
 }
 
-.Url{
-  
+.Url {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -34,11 +28,9 @@ header{
     border-radius: 4px;
     box-sizing: border-box;
     background-image: url('searchicon.png');
-
-
 }
 
-input[type=number]{
+input[type=number] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -46,10 +38,9 @@ input[type=number]{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-
 }
 
-.textarea{
+.textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -57,10 +48,9 @@ input[type=number]{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-
 }
 
-input[type=text]{
+input[type=text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -68,15 +58,14 @@ input[type=text]{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-
 }
 
-.item{
-     width: 50%;
+.item {
+    width: 50%;
     border-radius: 10px;
-    background:  #f2f2f2;
-    padding: 20px; 
-    font-family: monospace; 
+    background: #f2f2f2;
+    padding: 20px;
+    font-family: monospace;
     margin: 0 auto;
     margin-bottom: 10px
 }
@@ -86,12 +75,12 @@ input {
     border-radius: 6px;
 }
 
-textarea{
+textarea {
     border: 1px solid black;
     border-radius: 6px;
 }
 
-.imgitem{
+.imgitem {
     width: 20%;
     position: relative;
     right: -250px;
@@ -99,26 +88,35 @@ textarea{
 }
 
 .produtos {
-   
     border-radius: 10px;
-    background:  rgb(179, 179, 161);
-    padding: 20px; 
-    font-family: monospace; 
+    background: rgb(179, 179, 161);
+    padding: 20px;
+    font-family: monospace;
     margin: 0 auto;
     margin-bottom: 10px
 }
 
 .item1 {
-    font-family:monospace;
+    font-family: monospace;
     width: 100px
 }
-.adc{
+
+.adc {
     width: 40%;
     background-color: #4CAF50;
     color: white;
-    padding:20px 20px;
+    padding: 20px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
+
+.remove {
+    width: 40%;
+    background-color: rgb(214, 66, 66);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
