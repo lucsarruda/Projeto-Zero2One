@@ -8,7 +8,7 @@
     <script type="text/javascript" language="javascript" src="funcoes.js"></script>
 </head>
 
-<body>
+<body onload="ListaProdutos()">
 
     <header>
         <H1 align="Center">Listagem de produtos</H1>
@@ -16,6 +16,7 @@
 
     <div>
         <form action="ServidorTeste.php" method="Post" class="cabec">
+            </br>
             <label for="nome">Nome</label>
             </br>
             <input type="text" name="nome" id="nome" placeholder="Nome">

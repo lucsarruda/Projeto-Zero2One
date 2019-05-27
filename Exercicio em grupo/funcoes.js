@@ -7,55 +7,74 @@ function chamaBotao() {
     const URL = document.getElementById("URL").value
     const Descricao = document.getElementById("Descricao").value
 
+    const URL2 = 'https://api.conexaonfe.com.br/v1/produtos';
 
-    this.formulario = {
-            nome: nome,
-            valor: valor,
-            URL: URL,
-            Descricao: Descricao
-        }
-        //adiciona item
-    additem()
-        //Limpa formulario
+    fetch(URL2, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'bbb',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome: nome,
+                descricao: Descricao,
+                imagem: URL,
+                preco: valor
+            })
+        })
+        .then(async response => {
+            await ListaProdutos()
+        })
+        .catch(error => {
+            console.log(error)
+        });
+
+
+
+    //Limpa formulario
     clearForm()
 }
 
-function additem() {
+function additem(jsonItens) {
 
     var idItemD = this.idItem
 
-    let strDiv = `            
+    document.getElementById("divItens").innerHTML = ""
+
+    for (let index = 0; index < jsonItens.length; index++) {
+
+        let strDiv = `            
                                                 
     	<div id="Contador">                      
-    		<h3>item:${idItemD}</h3>                     
+    		<h3>item:${jsonItens[index].codigo}</h3>                     
     	</div>                                   
                                                 
     	<div id="produtos">                      
-    		<h3>Produto:${this.formulario.nome}</h3>    
+    		<h3>Produto:${jsonItens[index].nome}</h3>    
     	</div>                                   
                                                 
     	<div id="valor">                         
-    		<h3>Valor:${this.formulario.valor}</h3>                    
+    		<h3>Valor:${jsonItens[index].preco}</h3>                    
     	</div>                                   
                                                 
     	<div id="descri">                        
-    		<h3> Descrição:${this.formulario.Descricao} </h3> 
+    		<h3> Descrição:${jsonItens[index].descricao} </h3> 
     	</div>                                   
-                                                
-                                                
-    	<img src="${this.formulario.URL}" alt="produto ${this.formulario.nome}" class="imgitem"> 
-        
+                                            
+    	<img src="${jsonItens[index].imagem}" alt="produto" class="imgitem"> 
+
         <button type="button" class="remove" onclick="removeElement(this)">Remover</button>
         
         `
 
-    var div = document.createElement("div");
-    div.setAttribute("class", "item")
-    div.setAttribute("id", "itens_" + idItemD)
-    this.idItem = idItemD + 1
-    div.innerHTML = strDiv;
-    document.getElementById("divItens").appendChild(div);
+        var div = document.createElement("div");
+        div.setAttribute("class", "item")
+        div.setAttribute("id", "itens_" + idItemD)
+        this.idItem = idItemD + 1
+        div.innerHTML = strDiv;
+        document.getElementById("divItens").appendChild(div);
 
+    }
 
 }
 
@@ -73,4 +92,26 @@ function clearForm() {
     document.getElementById("valor").value = ""
     document.getElementById("URL").value = ""
     document.getElementById("Descricao").value = ""
+}
+
+
+function ListaProdutos() {
+
+    const URL = 'https://api.conexaonfe.com.br/v1/produtos';
+
+    fetch(URL, {
+            metodo: 'GET',
+            headers: {
+                'Authorization': 'bbb',
+                'Content-type': 'application/json'
+            }
+        })
+        .then(async response => {
+            this.additem(await response.json());
+        })
+        .catch(error => {
+            console.log(error)
+        });
+
+    console.log(`teste`)
 }
