@@ -1,24 +1,3 @@
-  let strDiv = `            
-                                                
-    	<div id="Contador">                      
-    		<h3 id="codigo_${jsonItens[index].codigo}">item:${jsonItens[index].codigo}</h3>                     
-    	</div>                                   
-                                                
-    	<div id="produtos">                      
-    		<h3 id="nome_${jsonItens[index].codigo}" >Produto:${jsonItens[index].nome}</h3>    
-    	</div>                                   
-                                                
-    	<div id="valor">                         
-    		<h3 id="Valor_${jsonItens[index].codigo}" >Valor:${jsonItens[index].preco}</h3>                    
-    	</div>                                   
-                                                
-    	<div id="descri">                        
-    		<h3 id="Valor_${jsonItens[index].codigo}" > Descrição:${jsonItens[index].descricao} </h3> 
-    	</div>                                   
-                                            
-    	<img id="imagem_${jsonItens[index].codigo}" src="${jsonItens[index].imagem}" alt="produto" class="imgitem"> 
-        <button type="button" class="remove" id='${jsonItens[index].codigo}' onclick="alert(this.id)">Altera</button>
+document.getElementById("nome_1").innerText.split(":")[1]
 
-        <button type="button" class="remove" id='${jsonItens[index].codigo}' onclick="removeElement(this.id)">Remover</button>
-        
-        `
+document.getElementById("imagem_1").src
