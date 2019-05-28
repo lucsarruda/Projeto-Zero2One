@@ -1,5 +1,7 @@
 const concluidas = []
 
+// @loadConcluidas()
+// Funcao para carregar e criar table com tarefas concluidas
 function loadConcluidas() {
 
     document.getElementById("divItens").innerHTML = ""
@@ -28,16 +30,16 @@ function loadConcluidas() {
     }
     strDiv += `</table>`
 
-
-
     var div = document.createElement("div");
     div.setAttribute("class", "item")
     div.innerHTML = strDiv;
     document.getElementById("divItens").appendChild(div);
 
-
 }
 
+// @checarCheck(obj)
+//     - Parametro : obj - Objeto vindo do evento onclik
+// Funcao de verificação de check ou uncheck no evento do input
 function checarCheck(obj) {
 
     const varobj = obj
@@ -57,6 +59,8 @@ function checarCheck(obj) {
 
 }
 
+// @CarregaGet()
+// Funcao para chamada de API das tarefas inicias
 function CarregaGet() {
 
     const URL = 'https://api.myjson.com/bins/jh0yn';
@@ -76,6 +80,9 @@ function CarregaGet() {
 
 }
 
+// @CarregaTarefasCabec(json)
+//      - Parametro : json - RETORNO DA API INICIAL
+// Funcao para criação inicial da carga das tarefas
 function CarregaTarefasCabec(json) {
     document.getElementById("divTarefas").innerHTML = ""
 
