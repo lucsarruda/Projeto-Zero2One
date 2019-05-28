@@ -1,0 +1,3 @@
+document.getElementById("nome_1").innerText.split(":")[1]
+
+document.getElementById("imagem_1").src
