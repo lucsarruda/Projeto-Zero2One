@@ -63,7 +63,7 @@ function checarCheck(obj) {
 // Funcao para chamada de API das tarefas inicias
 function CarregaGet() {
 
-    const URL = 'https://api.myjson.com/bins/jh0yn';
+    const URL = 'http://192.168.25.160:3000/todos' //'https://api.myjson.com/bins/jh0yn';
 
     fetch(URL, {
             metodo: 'GET',
