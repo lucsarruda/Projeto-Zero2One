@@ -34,7 +34,7 @@ function ListaInicial(json) {
         cols += `<td>${json[index].id}</td>
         <td>${json[index].nome}</td>
         <td><input type="checkbox" ${checkvar} disabled></td>
-        <td><button type="button" class="btn btn-waring" data-toggle="modal" data-target="#myModalAlterar"><span class="glyphicon glyphicon-pencil"></span>Alterar</button></td>
+        <td><button type="button" class="btn btn-waring" onclick='ModalAlterar(this)'><span class="glyphicon glyphicon-pencil"></span>Alterar</button></td>
         <td><button type="button" class="btn btn-danger" onclick='ModalExcluir(${json[index].id})'><span class="glyphicon glyphicon-trash"></span>Excluir</button></td>
         `
         newRow.append(cols);
@@ -69,11 +69,6 @@ function cadastrar() {
     $('#myModal').modal('toggle');
 }
 
-function alterar() {
-    $('#myModalAlterar').modal('toggle');
-}
-
-
 function excluir(id) {
 
     const URL2 = 'http://192.168.25.160:3000/todos/' + $("#IDEXCLUI").val();
@@ -102,12 +97,47 @@ function ModalExcluir(id) {
 
 function limpaGeral() {
     $("#IDEXCLUI").val("")
+    $("#IDALTERA").val("")
     $("#nometarefa_novo").val("")
     $("#checkada_novo").prop('checked', false)
     $("#nometarefa_altera").val("")
     $("#checkada_altera").prop('checked', false)
 }
 
-function ModalAlterar() {
+function ModalAlterar(lineobj) {
+    //lineobj.parentElement.parentElement.children[0].innerText
+    //lineobj.parentElement.parentElement.children[1].innerText
+    //lineobj.parentElement.parentElement.children[2].children[0].checked
+    $("#IDALTERA").val(lineobj.parentElement.parentElement.children[0].innerText)
+    $("#nometarefa_altera").val(lineobj.parentElement.parentElement.children[1].innerText)
+    $("#checkada_altera").prop('checked', lineobj.parentElement.parentElement.children[2].children[0].checked)
+    $('#myModalAlterar').modal('show');
+}
 
+
+
+function alterar() {
+
+    const URL2 = 'http://192.168.25.160:3000/todos/' + $("#IDALTERA").val();
+
+    fetch(URL2, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                todo: {
+                    nome: $("#nometarefa_altera").val(),
+                    status: $('#checkada_altera').is(':checked')
+                }
+            })
+        })
+        .then(async response => {
+            await GetAPI('ListaInicial')
+        })
+        .catch(error => {
+            console.log(error)
+        });
+
+    $('#myModalAlterar').modal('toggle');
 }
