@@ -43,10 +43,6 @@ function loadConcluidas() {
 function checarCheck(obj) {
 
     const varobj = obj
-
-    //Chama função para alterar API - Metodo PUT
-    PutAPI(varobj.id , varobj.value  , varobj.checked )
-
     if (varobj.checked) {
         concluidas.push({ 'id': varobj.id, 'nome': varobj.value })
         loadConcluidas()
@@ -67,15 +63,16 @@ function checarCheck(obj) {
 // Funcao para chamada de API das tarefas inicias
 function CarregaGet() {
 
-     const URL = 'http://localhost:8080/tarefas' //'https://api.myjson.com/bins/jh0yn';
+    const URL = 'http://localhost:8080/tarefas' //'https://api.myjson.com/bins/jh0yn';
     const username = 'usuario1'
     const password = '1'
 
     fetch(URL, {
             metodo: 'GET',
             headers: {
-                'Authorization': 'Basic ' +  btoa(username + ":" + password),
-                'Content-type': 'application/json'
+                'Authorization': 'Basic ' + btoa(username + ":" + password),
+                'Content-type': 'application/json',
+                'mode': 'no-cors'
             }
         })
         .then(async response => {
@@ -84,7 +81,6 @@ function CarregaGet() {
         .catch(error => {
             console.log(error)
         });
-
 
 }
 
@@ -114,31 +110,4 @@ function CarregaTarefasCabec(json) {
     var div = document.createElement("div");
     div.innerHTML = strDiv;
     document.getElementById("divTarefas").appendChild(div);
-}
-
-
-function PutAPI(id , varnome , check){
-
-    const URL2 = 'http://localhost:8080/tarefas/' + id //'https://api.myjson.com/bins/jh0yn';
-    const username = 'usuario1'
-    const password = '1'
-
-    fetch(URL2, {
-            method: 'PUT',
-            headers: {
-                'Authorization': 'Basic ' +  btoa(username + ":" + password),
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                    nome: varnome ,
-                    status: check
-            })
-        })
-        .then(async response => {
-            await console.log("Alterado PUT API ")
-        })
-        .catch(error => {
-            console.log(error)
-            alert(error)
-        });
 }
