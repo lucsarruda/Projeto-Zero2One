@@ -63,11 +63,14 @@ function checarCheck(obj) {
 // Funcao para chamada de API das tarefas inicias
 function CarregaGet() {
 
-    const URL = 'http://192.168.25.160:3000/todos' //'https://api.myjson.com/bins/jh0yn';
+     const URL = 'http://localhost:8080/tarefas' //'https://api.myjson.com/bins/jh0yn';
+    const username = 'usuario1'
+    const password = '1'
 
     fetch(URL, {
             metodo: 'GET',
             headers: {
+                'Authorization': 'Basic ' +  btoa(username + ":" + password),
                 'Content-type': 'application/json'
             }
         })
@@ -77,6 +80,7 @@ function CarregaGet() {
         .catch(error => {
             console.log(error)
         });
+
 
 }
 

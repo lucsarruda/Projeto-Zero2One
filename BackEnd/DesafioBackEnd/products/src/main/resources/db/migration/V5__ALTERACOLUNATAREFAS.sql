@@ -1,0 +1,1 @@
+ALTER TABLE tarefa MODIFY COLUMN id int auto_increment

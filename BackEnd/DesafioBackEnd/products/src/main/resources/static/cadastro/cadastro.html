@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cadastro de Tarefas - Desafio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="funcoes.js"></script>
+</head>
+
+<body onload="GetAPI('ListaInicial')">
+
+
+
+    <div class="container">
+        <h2>
+            <center>Tarefas - Desafio </center>
+        </h2>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Nova Tarefa <span class="glyphicon glyphicon-plus-sign"></span></button>
+    </div>
+
+    <div class="container">
+        <hr>
+        <h3>Tarefas Cadastradas </h3>
+        <button type="button" class="btn btn-default btn-sm" onclick="GetAPI('ListaInicial')">
+        <span class="glyphicon glyphicon-refresh"></span> Atualizar
+        </button>
+        <table class="table table-striped" id="tarefas">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tarefa</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tbodytarefas">
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Cadastrar Nova Tarefa </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+
+                        <label for="tarefa">Nome Tarefa:</label>
+                        <input type="text" class="form-control" id="nometarefa_novo" name="nometarefa_novo">
+                    </div>
+
+                    <div class="form-group">
+                        <label><input type="checkbox" name="checkada_novo" id="checkada_novo"> Iniciar Como Concluida?</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="botaocadastrar" onclick="cadastrar()">Cadastrar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Modal Alterar -->
+    <div id="myModalAlterar" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Alterar Tarefa </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+
+                        <label for="tarefa">Nome Tarefa:</label>
+                        <input type="hidden" id="IDALTERA">
+                        <input type="text" class="form-control" id="nometarefa_altera" name="nometarefa_altera">
+                    </div>
+
+                    <div class="form-group">
+                        <label><input type="checkbox" name="checkada_altera" id="checkada_altera"> Concluida?</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="botaocadastrar" onclick="alterar()">Alterar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Excluir -->
+    <div id="myModalExcluir" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> Excluir Tarefa </h4>
+                </div>
+                <div class="modal-body">
+                    <h4>Tem certeza ao excluir a Tarefa?</h4>
+                    <input type="hidden" id="IDEXCLUI">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="botaocadastrar" onclick="excluir()">Sim</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
